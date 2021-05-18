@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+import "google/protobuf/descriptor.proto";
+
+package mig_one.http_config;
+option go_package = "mig_one/http_config";
+
+message config {
+    bool token = 1;
+}
+
+extend google.protobuf.MethodOptions {
+    config api = 65801;
+}

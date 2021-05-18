@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+import "http_config.proto";
+
+package mig_one.user;
+option go_package = "mig_one/user";
+
+message Param {
+    string  ip      =   1;
+    string  referer =  2;
+    string  user_agent = 3;
+}
+
+message Response {
+    bool val = 1;
+}
+
+
+service User {
+    rpc IsRiskUser(Param) returns (Response) {
+        option (http_config.api) = {
+            token:true
+        };
+    }
+}
